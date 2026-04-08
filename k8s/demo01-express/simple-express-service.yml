@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-express-service
+spec:
+  type: NodePort                   # allows access from outside cluster
+  selector:
+    app: simple-express
+  ports:
+    - protocol: TCP
+      port: 80                     # service port
+      targetPort: 3000             # container port
+      nodePort: 30080              # optional, accessible at localhost:30080
